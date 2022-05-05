@@ -29,7 +29,16 @@ function getDay(date, lang) {
 // Принимает объект даты, и должно вернуть компоненты даты в виде строки.
 // Вид должен быть такой 12:02(часы и минуты), то есть если у вас одно число на одном из
 // компонентов, то добавляем 0 перед ним
-function formatTime(date) { }
+function formatTime(date) {
+  let hours = date.getHours().toString();
+  let minutes = date.getMinutes().toString();
+  if (hours.length === 1) {
+    hours = `0${hours}`;
+  } else if (minutes.length === 1) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
 
 /*
 Напишите функцию getLastDayOfMonth(year, month), 
