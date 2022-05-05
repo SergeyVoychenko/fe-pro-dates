@@ -32,12 +32,8 @@ function getDay(date, lang) {
 function formatTime(date) {
   let hours = date.getHours().toString();
   let minutes = date.getMinutes().toString();
-  if (hours.length === 1) {
-    hours = `0${hours}`;
-  } else if (minutes.length === 1) {
-    minutes = `0${minutes}`;
-  }
-  return `${hours}:${minutes}`;
+  let addZero = (time) => time.length === 1 ? time = `0${time}`: time;
+  return `${addZero(hours)}:${addZero(minutes)}`;
 }
 
 /*
