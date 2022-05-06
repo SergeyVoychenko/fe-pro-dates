@@ -32,7 +32,7 @@ function getDay(date, lang) {
 function formatTime(date) {
   let hours = date.getHours().toString();
   let minutes = date.getMinutes().toString();
-  let addZero = (time) => time.length === 1 ? time = `0${time}`: time;
+  let addZero = (time) => time.length === 1 ? time = `0${time}` : time;
   return `${addZero(hours)}:${addZero(minutes)}`;
 }
 
@@ -45,8 +45,12 @@ year – год из четырёх цифр, например, 2012.
 month – месяц от 0 до 11.
 К примеру, getLastDayOfMonth(2012, 1) = 29 (високосный год, февраль).
 */
-function getLastDayOfMonth(year, month) { }
-
+function getLastDayOfMonth(year, month) {
+  const time = new Date(year, month).getTime();
+  const time2 = new Date(year, month + 1).getTime();
+  let day = (time2 - time) / 1000 / 60 / 60 / 24;
+  return day;
+}
 module.exports = {
   getDay,
   formatTime,
