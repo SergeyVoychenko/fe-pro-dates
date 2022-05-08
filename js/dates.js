@@ -25,7 +25,7 @@ function getDay(date, lang) {
   };
   // return lang === 'ru' ? dayNames.ru[date.getDay()] : dayNames.en[date.getDay()];
   // можно и лутше делать по проше, оперирую оргументами а объектуе.
-  return dayNames[lang][date.getDate()];
+  return dayNames[lang][date.getDay()];
 
 }
 
