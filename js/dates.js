@@ -23,7 +23,10 @@ function getDay(date, lang) {
       6: 'Суббота',
     },
   };
-  return lang === 'ru' ? dayNames.ru[date.getDay()] : dayNames.en[date.getDay()];
+  // return lang === 'ru' ? dayNames.ru[date.getDay()] : dayNames.en[date.getDay()];
+  // можно и лутше делать по проше, оперирую оргументами а объектуе.
+  return dayNames[lang][date.getDate()];
+
 }
 
 // Принимает объект даты, и должно вернуть компоненты даты в виде строки.
@@ -46,10 +49,14 @@ month – месяц от 0 до 11.
 К примеру, getLastDayOfMonth(2012, 1) = 29 (високосный год, февраль).
 */
 function getLastDayOfMonth(year, month) {
-  const time = new Date(year, month).getTime();
-  const time2 = new Date(year, month + 1).getTime();
-  let day = (time2 - time) / 1000 / 60 / 60 / 24;
-  return day;
+  // const time = new Date(year, month).getTime();
+  // const time2 = new Date(year, month + 1).getTime();
+  // let day = (time2 - time) / 1000 / 60 / 60 / 24;
+  // return day;
+  // грамоско и убого выглядит, есть вариант намного проще,
+  // прямо в аргументах добавить месяц и указав нулевой день,
+  //  вернет последний день предыдущего месяца.
+  return new Date(year, month + 1, 0).getDate();
 }
 module.exports = {
   getDay,
